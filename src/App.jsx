@@ -7,7 +7,7 @@ function App() {
       <Notes />
       <Info name="Bianca Beatriz Ferenal" />
     </div>
-  )
+  ) 
 }
 
 export default App
