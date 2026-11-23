@@ -1,4 +1,5 @@
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import NoteCard from './NoteCard.jsx'
 
 function Notes() {
@@ -21,6 +22,10 @@ function Notes() {
   })
 
   const [searchQuery, setSearchQuery] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -64,7 +69,9 @@ function Notes() {
         </h1>
 
         <div>
-          <p className="mb-2 text-[13px] font-normal tracking-wide text-[#949494]">SEARCH</p>
+          <p className="mb-2 text-[13px] font-normal tracking-wide text-[#949494]">
+            SEARCH
+          </p>
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -74,7 +81,9 @@ function Notes() {
         </div>
 
         <form onSubmit={handleSubmit} className="grid gap-3">
-          <p className="text-[13px] font-normal tracking-wide text-[#949494]">NEW NOTE</p>
+          <p className="text-[13px] font-normal tracking-wide text-[#949494]">
+            NEW NOTE
+          </p>
           <input
             name="title"
             value={formData.title}
